@@ -12,6 +12,7 @@ import { ArtworkComponent } from './artwork/artwork.component';
 import { GamestoryComponent } from './gamestory/gamestory.component';
 import { ConvomodComponent } from './convomod/convomod.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

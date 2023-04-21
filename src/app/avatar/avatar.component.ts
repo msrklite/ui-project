@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-avatar',
@@ -6,8 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent {
-  name:any = "";
+  name = "";
+
+  constructor(private apiService: ApiService){}
+
   search(){
-    alert("hello ", this.name);
+    this.apiService.endpointOne(this.name).subscribe((response)=>{
+      console.log(response);
+    });
   }
 }

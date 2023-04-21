@@ -5,7 +5,7 @@
                 <label for="exampleFormControlInput1">Enter your User-name</label>
             </div>
             <div class="col-4">    
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="sunshine" ([ngModel])="name">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="sunshine" name="name" [(ngModel)]="name">
             </div>
             <div class="col-2">    
                 <button class="btn btn-primary" (click)="search()">Go</button>
