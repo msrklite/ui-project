@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent {
-
+  name:any = "";
+  search(){
+    alert("hello ", this.name);
+  }
 }

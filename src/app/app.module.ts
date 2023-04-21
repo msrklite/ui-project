@@ -11,6 +11,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import { GamestoryComponent } from './gamestory/gamestory.component';
 import { ConvomodComponent } from './convomod/convomod.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ConvomodComponent } from './convomod/convomod.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
