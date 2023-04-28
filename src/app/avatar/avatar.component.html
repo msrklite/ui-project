@@ -65,7 +65,7 @@
 					
                     <div >
                                     
-                        <div class="col-3 out" *ngIf="repImgUrl==''"> 
+                        <div class="col-3 out" *ngIf="repImgUrl1=='' || repImgUrl2==''|| repImgUrl3=='' || repImgUrl4=='' "> 
                             <h6>Create your own avatar from an image</h6>
                             
                             <input
@@ -73,39 +73,62 @@
                             type="file" (change)="upload($event)" accept=".png,.jpg"
                             #fileInput>
                             <img *ngIf="uploadStarted" class="img-static" src="assets/up.jpg"  (click)="fileInput.click()"/>
-                            <img *ngIf="!uploadStarted && repImgUrl==''" class="img-static" src="assets/Loading_2.gif"  (click)="fileInput.click()"/>
-                            <img *ngIf="repImgUrl!=''" class="img-static" [src]="repImgUrl"  (click)="fileInput.click()"/>
+                            <img *ngIf="!uploadStarted && downloadURLImg==''" class="img-static" src="assets/Loading_2.gif"  (click)="fileInput.click()"/>
+                            <img *ngIf="downloadURLImg!=''" class="img-static" [src]="downloadURLImg"  (click)="fileInput.click()"/>
                             <div class="out">
                                 <h5>Click to Upload</h5>
                             </div>
                             <!-- <h1 *ngIf="!uploadStarted" >{{percentage}}</h1> -->
                         </div>
-                        <div class="row" *ngIf="repImgUrl!=''">
-                            <div class="col-3 out">
-                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
-                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
-                                <h5 >Model 1</h5>
-                            </div>
-                            <div class="col-3 out">
-                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
-                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
-                                <h5>Model 2</h5>
-                            </div>
-                            <div class="col-3 out">
-                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
-                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
-                                <h5>Model 3</h5>
-                            </div>
-                            <div class="col-3 out">
-                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
-                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
-                                <h5>Model 4</h5>
-                            </div>
+                        <div
+                        class="row"
+                        *ngIf="
+                          repImgUrl1 != '' || repImgUrl2 != '' || repImgUrl3 != '' || repImgUrl4 != ''
+                        "
+                      >
+                        <div class="col-3 out">
+                          <img *ngIf="repImgUrl1 != ''" class="img-static" [src]="repImgUrl1" />
+                          <img
+                            *ngIf="repImgUrl1 == ''"
+                            class="img-static"
+                            src="assets/Loading_2.gif"
+                          />
+                          <h5>Model 1</h5>
+                        </div>
+                        <div class="col-3 out">
+                          <img *ngIf="repImgUrl2 != ''" class="img-static" [src]="repImgUrl2" />
+                          <img
+                            *ngIf="repImgUrl2 == ''"
+                            class="img-static"
+                            src="assets/Loading_2.gif"
+                          />
+                          <h5>Model 2</h5>
+                        </div>
+                        <div class="col-3 out">
+                          <img *ngIf="repImgUrl3 != ''" class="img-static" [src]="repImgUrl3" />
+                          <img
+                            *ngIf="repImgUrl3 == ''"
+                            class="img-static"
+                            src="assets/Loading_2.gif"
+                          />
+                          <h5>Model 3</h5>
+                        </div>
+                        <div class="col-3 out">
+                          <img *ngIf="repImgUrl4 != ''" class="img-static" [src]="repImgUrl4" />
+                          <img
+                            *ngIf="repImgUrl4 == ''"
+                            class="img-static"
+                            src="assets/Loading_2.gif"
+                          />
+                          <h5>Model 4</h5>
+                        </div>
+                      </div>
+                      
                             <div class="col-12" style="text-align: right;">
                                 <button class="btn btn-primary" (click)="back()">Back</button>
                             </div>
                         </div>
-                    </div>
+                    
 				</ng-template>
 			</div>
 		</div>

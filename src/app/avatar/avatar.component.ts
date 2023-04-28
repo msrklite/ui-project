@@ -60,7 +60,10 @@ export class AvatarComponent {
 
   uploadStarted:boolean = true;
   downloadURLImg:string = "";
-  repImgUrl:any = "";
+  repImgUrl1:any = "";
+  repImgUrl2:any = "";
+  repImgUrl3:any = "";
+  repImgUrl4:any = "";
 
   constructor(private apiService: ApiService, private storage: AngularFireStorage){}
   
@@ -103,28 +106,32 @@ export class AvatarComponent {
 uploadSearch(url:any){
   this.apiService.uploadSearch(url).subscribe((response)=>{
     console.log(response);
-    //this.repImgUrl=response;
+    this.repImgUrl1=response;
 });
 this.apiService.uploadSearch2(url).subscribe((response)=>{
   console.log(response);
-  //this.repImgUrl=response;
+  this.repImgUrl2=response;
 });
 this.apiService.uploadSearch3(url).subscribe((response)=>{
   console.log(response);
-  //this.repImgUrl=response;
+  this.repImgUrl3=response;
 });
 this.apiService.uploadSearch4(url).subscribe((response)=>{
   console.log(response);
-  //this.repImgUrl=response;
+  this.repImgUrl4=response;
 });
-setTimeout(()=>{
+// setTimeout(()=>{
 
-  this.repImgUrl="assets/result.jpg";
+//   this.repImgUrl="assets/result.jpg";
   
-   }, 5000);
+//    }, 5000);
 }
 back(){
-  this.repImgUrl='';
+  this.downloadURLImg='';
+  this.repImgUrl1='';
+  this.repImgUrl2='';
+  this.repImgUrl3='';
+  this.repImgUrl4='';
   this.uploadStarted=true;
 }
 
