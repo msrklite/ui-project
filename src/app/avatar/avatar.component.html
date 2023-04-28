@@ -1,39 +1,113 @@
-<form>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-2">
-                <label for="exampleFormControlInput1">Enter your User-name</label>
-            </div>
-            <div class="col-4">    
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="sunshine" name="name" [(ngModel)]="name">
-            </div>
-            <div class="col-2">    
-                <button class="btn btn-primary" (click)="search()">Go</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 out">
-                <h6>Here is your avatar based on your user name</h6>
-                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
-                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
-            </div>
-            <div class="col-4 out"> 
-                <h6>Create your own avatar from an image</h6>
-                
-                <input
-                style="display: none"
-                type="file" (change)="upload($event)" accept=".png,.jpg"
-                #fileInput>
-                <img *ngIf="uploadStarted" class="img-static" src="assets/up.jpg"  (click)="fileInput.click()"/>
-                <img *ngIf="!uploadStarted && repImgUrl==''" class="img-static" src="assets/Loading_2.gif"  (click)="fileInput.click()"/>
-                <img *ngIf="repImgUrl!=''" class="img-static" [src]="repImgUrl"  (click)="fileInput.click()"/>
-                <!-- <h1 *ngIf="!uploadStarted" >{{percentage}}</h1> -->
-            </div>
-            <div class="col-4 out"> 
-                <h6>Tell us how you want your avatar to be and we will create it for you</h6>
-                <textarea class="form-control textarea" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-        </div>
 
-    </div>
-</form>
+
+<div ngbAccordion [closeOthers]="true">
+	<div ngbAccordionItem *ngFor="let panel of panels1; let i = index" [collapsed]="false">
+		<h2 ngbAccordionHeader (click)="toggle(panel)">
+			<button ngbAccordionButton>{{ panel }}</button>
+		</h2>
+		<div ngbAccordionCollapse>
+			<div ngbAccordionBody>
+				<ng-template >
+					<form >
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="exampleFormControlInput1">Enter your User-name</label>
+                                </div>
+                                <div class="col-4">    
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="sunshine" name="name" [(ngModel)]="name">
+                                </div>
+                                <div class="col-2">    
+                                    <button class="btn btn-primary" (click)="search()">Go</button>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="responseObj.success || responseObj2.success || responseObj3.success || responseObj4.success">
+                                <div class="col-3 out">
+                                    <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                                    <img *ngIf="!responseObj.success" class="img-static" src="assets/Loading_2.gif" />
+                                    <h5 >Model 1</h5>
+                                </div>
+                                <div class="col-3 out">
+                                    <img *ngIf="responseObj2.success" class="img-static" [src]="responseObj2.data" />
+                                    <img *ngIf="!responseObj2.success" class="img-static" src="assets/Loading_2.gif" />
+                                    <h5>Model 2</h5>
+                                </div>
+                                <div class="col-3 out">
+                                    <img *ngIf="responseObj4.success" class="img-static" [src]="responseObj4.data" />
+                                    <img *ngIf="!responseObj4.success" class="img-static" src="assets/Loading_2.gif" />
+                                    <h5>Model 3</h5>
+                                </div>
+                                <div class="col-3 out">
+                                    <img *ngIf="responseObj3.success" class="img-static" [src]="responseObj3.data" />
+                                    <img *ngIf="!responseObj3.success" class="img-static" src="assets/Loading_2.gif" />
+                                    <h5>Model 4</h5>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </form>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div ngbAccordion [closeOthers]="true">
+	<div ngbAccordionItem *ngFor="let panel of panels2; let i = index" [collapsed]="false">
+		<h2 ngbAccordionHeader (click)="toggle(panel)">
+			<button ngbAccordionButton>{{ panel }}</button>
+		</h2>
+		<div ngbAccordionCollapse>
+			<div ngbAccordionBody>
+				<ng-template >
+					
+                    <div >
+                                    
+                        <div class="col-3 out" *ngIf="repImgUrl==''"> 
+                            <h6>Create your own avatar from an image</h6>
+                            
+                            <input
+                            style="display: none"
+                            type="file" (change)="upload($event)" accept=".png,.jpg"
+                            #fileInput>
+                            <img *ngIf="uploadStarted" class="img-static" src="assets/up.jpg"  (click)="fileInput.click()"/>
+                            <img *ngIf="!uploadStarted && repImgUrl==''" class="img-static" src="assets/Loading_2.gif"  (click)="fileInput.click()"/>
+                            <img *ngIf="repImgUrl!=''" class="img-static" [src]="repImgUrl"  (click)="fileInput.click()"/>
+                            <div class="out">
+                                <h5>Click to Upload</h5>
+                            </div>
+                            <!-- <h1 *ngIf="!uploadStarted" >{{percentage}}</h1> -->
+                        </div>
+                        <div class="row" *ngIf="repImgUrl!=''">
+                            <div class="col-3 out">
+                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
+                                <h5 >Model 1</h5>
+                            </div>
+                            <div class="col-3 out">
+                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
+                                <h5>Model 2</h5>
+                            </div>
+                            <div class="col-3 out">
+                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
+                                <h5>Model 3</h5>
+                            </div>
+                            <div class="col-3 out">
+                                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
+                                <h5>Model 4</h5>
+                            </div>
+                            <div class="col-12" style="text-align: right;">
+                                <button class="btn btn-primary" (click)="back()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
