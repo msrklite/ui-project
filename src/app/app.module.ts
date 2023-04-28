@@ -13,6 +13,10 @@ import { GamestoryComponent } from './gamestory/gamestory.component';
 import { ConvomodComponent } from './convomod/convomod.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp({ apiKey: "AIzaSyCHxfCrDc-bXY-2XzG9ghrmgst5eJ_AB-E", authDomain: "stushare-webapp.firebaseapp.com", projectId: "stushare-webapp", storageBucket: "stushare-webapp.appspot.com", messagingSenderId: "722687313547", appId: "1:722687313547:web:6febf8d1a6b246b82a768e", measurementId: "G-E81RGZWTXH" }), AngularFireStorageModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -14,11 +14,20 @@
         <div class="row">
             <div class="col-4 out">
                 <h6>Here is your avatar based on your user name</h6>
-                <img class="img-static" src="assets/user.webp" />
+                <img *ngIf="responseObj.success" class="img-static" [src]="responseObj.data" />
+                <img *ngIf="!responseObj.success" class="img-static" src="assets/user.webp" />
             </div>
             <div class="col-4 out"> 
                 <h6>Create your own avatar from an image</h6>
-                <img class="img-static" src="assets/up.jpg" />
+                
+                <input
+                style="display: none"
+                type="file" (change)="upload($event)" accept=".png,.jpg"
+                #fileInput>
+                <img *ngIf="uploadStarted" class="img-static" src="assets/up.jpg"  (click)="fileInput.click()"/>
+                <img *ngIf="!uploadStarted && repImgUrl==''" class="img-static" src="assets/Loading_2.gif"  (click)="fileInput.click()"/>
+                <img *ngIf="repImgUrl!=''" class="img-static" [src]="repImgUrl"  (click)="fileInput.click()"/>
+                <!-- <h1 *ngIf="!uploadStarted" >{{percentage}}</h1> -->
             </div>
             <div class="col-4 out"> 
                 <h6>Tell us how you want your avatar to be and we will create it for you</h6>
